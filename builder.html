@@ -34,6 +34,7 @@
         }
         #droparea {
             float: right;
+            border: 1px #dddddd solid;
         }
         #draggable {
             float: left;
@@ -46,6 +47,11 @@
             color: #555;
         }
         i {font-size: 50px; margin:0 20px; cursor: pointer;}
+        #desktopToggle, #tabletToggle, #mobileToggle {display: none;}
+        #droparea.preview {width: 100%; margin: 0 auto; display: block; float: none;}
+        #droparea.preview #email_table {display: block; margin: 0 auto;}
+        
+        .preview {text-align: center; margin: 0 auto; width: 300px; margin-bottom: 20px;}
     </style>
 
 </head>
@@ -54,7 +60,13 @@
 
 <body>
 
+    <div class="preview">
+    
+    <a href="#" id="previewMode">Enable preview mode</a><br /><br />
 
+    <i id="desktopToggle" class="fa fa-desktop active"></i><i id="tabletToggle" class="fa fa-tablet"></i><i id="mobileToggle" class="fa fa-mobile"></i>
+    
+    </div>
 
     <!--<div id="draggable">
 
@@ -863,8 +875,7 @@
 
 
     </div>
-
-    <i id="desktopToggle" class="fa fa-desktop active"></i><i id="tabletToggle" class="fa fa-tablet"></i><i id="mobileToggle" class="fa fa-mobile"></i>
+    
     
     <div id="droparea">
 

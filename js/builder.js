@@ -100,6 +100,8 @@ $(window).load(function() {
 
     });
     
+    
+    
     $("#draggable a").click(function(e){
          e.preventDefault();
     });
@@ -113,6 +115,14 @@ $(window).load(function() {
             $("#desktopToggle").click(function() {
                 $("#droparea").animate({width: '100%'}, 200);
             });
-    
+    $("#previewMode").click(function() {
+        $("#draggable").toggle();
+        $("#droparea").toggleClass("preview");
+        $("i").toggle();
+        if (!$("#droparea").hasClass("preview"))
+    {
+        $("#droparea").width(700);
+    }
+    });
 
 });//END LOAD FUNCTION
