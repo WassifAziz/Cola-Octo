@@ -1,4 +1,12 @@
 $(window).load(function() {
+    
+    $('#droparea table').click(function(e){   
+        e.preventDefault(); 
+    });
+    
+    $('a').click(function(e){   
+        e.preventDefault(); 
+    });
 
     var width = 700;
     var column_width = 20;
@@ -15,6 +23,7 @@ $(window).load(function() {
     //        var main_column_width = width - total_column_width;
     //        //alert(new_container_width);
     $('.main_column').attr('width', main_column_width);
+
 
     
     
@@ -82,7 +91,7 @@ $(window).load(function() {
     /*$('.loader').on('click', function(){
         $('.generated').load('week.html');
     });*/
-    
+
     
     
 //    $(".builder-table").click(function(){
@@ -93,15 +102,34 @@ $(window).load(function() {
 //        
 //    });
     
+    
+    //double click to insert
     $(".builder-table").click(function(){
 
-        var value = $(this).html().trim();;
+        var value = $(this).parent().html();
+        value = value.trim();
         $(value).appendTo(".main_row td");
 
     });
     
-    $("#draggable a").click(function(e){
-         e.preventDefault();
+
+    
+    //click to delete
+    $('#droparea').on('click', 'tr', function() { 
+    
+        var tr = $(this).closest('#droparea tr');
+        if ($(this).hasClass("main_row")) {
+    
+        }//end if
+        
+        else{
+            tr.css("background-color","#FF3700");
+            tr.fadeOut(400, function(){
+            tr.remove();
+            });
+        }//end else
+        
+      return false;
     });
     
     
