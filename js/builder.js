@@ -82,13 +82,7 @@ $(window).load(function() {
     /*$('.loader').on('click', function(){
         $('.generated').load('week.html');
     });*/
-    
-    $(".builder-table").click(function(){
-       
-        alert();
-        
-    });
-    
+
     
     
 
