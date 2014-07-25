@@ -83,9 +83,25 @@ $(window).load(function() {
         $('.generated').load('week.html');
     });*/
     
-    $(".builder-table").click(Function(){
-                
-                
+    
+    
+//    $(".builder-table").click(function(){
+//        
+//        var value = $(this).html();
+//        value = value.replace(/\s+/g, '');
+//        (value).appendTo(".main_row td");
+//        
+//    });
+    
+    $(".builder-table").click(function(){
+
+        var value = $(this).html().trim();;
+        $(value).appendTo(".main_row td");
+
+    });
+    
+    $("#draggable a").click(function(e){
+         e.preventDefault();
     });
     
     
