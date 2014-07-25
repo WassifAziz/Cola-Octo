@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Drag and Drop update html - jsFiddle demo</title>
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.inlineedit.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+
+    <!--slider css/jquery-->
+
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <style type='text/css'>
+        body {
+            margin: 100px;
+        }
+        .sortable {
+            height: 300px;
+            background: #ccc;
+            overflow: auto;
+        }
+        .toggle {
+            background: green;
+            margin: 3px 0 0 0;
+        }
+        #droparea {
+            float: right;
+        }
+        #draggable {
+            float: left;
+        }
+        <!--inline edit css--> .ui-state-hover {
+            background-color: #ffC
+        }
+        .inlineEdit-placeholder {
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+
+
+
+    <script type='text/javascript'>
+        //<![CDATA[ 
+        $(window).load(function() {
+
+
+
+
+
+            var width = 600;
+            var column_width = 20;
+            var main_column_width = 560;
+
+
+
+            //        var width=prompt("Set email width");
+            $('.main_container_table').attr('width', width);
+            //
+            //         var column_width=prompt("Set column width");
+            $('.margin_column').attr('width', column_width);
+            //
+            //        var total_column_width = column_width*2;
+            //        var main_column_width = width - total_column_width;
+            //        //alert(new_container_width);
+            $('.main_column').attr('width', main_column_width);
+
+
+
+
+
+
+
+
+
+            $(function() {
+                var tbdiv = $('#draggable table');
+                $(tbdiv).draggable({
+                    connectToSortable: ".sortable",
+                    helper: "clone",
+                    revert: "invalid"
+                });
+
+                $(".sortable").sortable({
+                    revert: true,
+                    receive: function(event, ui) {
+                        var html = [];
+
+
+                        //$('.last_row').after('<tr><td>column 2 value</td></tr>');
+                        //var dropped_table = $(this).html()
+                        //alert(dropped_table);
+
+
+                        /*var TabIn = $('.sortable').find('table').length;
+
+                        setInterval(function() {
+                            
+                            $(".sortable").sortable();
+
+                        }, 1000);
+                        
+                        
+                        if (TabIn >= 1) {
+                            console.log('has ' + TabIn);
+
+                            $(this).parent('tr').after('<tr><td bgcolor="#FFFFFF" class="sortable" id="">New</td></tr>');
+
+                            //$(".sortable").sortable('refresh');
+
+                        }
+                        
+
+                        $(this).removeClass('sortable');
+
+                        $(this).removeClass('ui-sortable');*/
+
+                        //$(".sortable").sortable();
+
+
+                    }
+                });
+
+            });
+
+
+
+
+
+
+
+            setInterval(function() {
+
+                $('.main_row').each(function() {
+
+                    var TabIn = $('.sortable').find('table').length;
+
+                    if (TabIn >= 1) {
+                        console.log('has ' + TabIn);
+
+                        //$(".sortable").sortable('refresh');
+
+                        $(this).removeClass('main_row');
+                        
+                        $(this).find('td').removeClass('sortable');
+
+                        $(this).find('td').removeClass('ui-sortable');
+
+                        $(this).after('<tr class="main_row"><td bgcolor="#FFFFFF" class="sortable" id=""></td></tr>');
+
+
+
+                        $(".sortable").sortable({
+                            revert: true,
+                            receive: function(event, ui) {
+                                var html = [];
+                            }
+                        });
+
+                        //event.preventDefault();
+
+                    } else {
+                        console.log('no table');
+                    }
+
+                });
+
+            }, 1000);
+
+
+            //INLINE EDIT SCRIPT
+            $(function() {
+                $('.editable').inlineEdit({
+                    control: 'textarea'
+                });
+            });
+
+
+
+        }); //END JQUERY
+    </script>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+<body>
+
+    <div id="draggable">
+
+        <table border="0" cellspacing="0" cellpadding="0" class="main_container_table">
+            <tr>
+                <td bgcolor="#FFFFFF">
+                    <a href="{LogEvent:276}http://www.business.natwest.com/afb/public/nwb/AFBRoot/mainhome/!ut/p/c5/04_SB8K8xLLM9MSSzPy8xBz9CP0os3jLsGBDA09nEwP_MGMzA09L_2DTIDMzo2BXY6B8pFm8AQ7gaEBAdzjIPtwqDMwh8njM9_PIz03VL8iNMMgycVQEADpfKwM!/dl3/d3/L2dBISEvZ0FBIS9nQSEh/" target="_blank">
+                        <img src="images/NW_rapport_1.jpg" alt="NatWest" width="600" height="73" style="height:auto; display:block; border:none;" border="0" class="table" />
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+
+        <table border="0" cellspacing="0" cellpadding="0" class="main_container_table">
+
+            <tr>
+                <td bgcolor="#FFFFFF">
+                    <a href="{LogEvent:279}http://www.natwest.com/businessrapport" target="_blank">
+                        <img src="images/NW_rapport_2.jpg" width="600" height="246" alt="Online fraud costs businesses millions. But the best protection costs nothing." style="height:auto; display:block" border="0" class="table" />
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+
+        <table width="500" class="editable">
+
+            <tr>
+                <td width="0">
+                    <img src="images/spacer.gif" alt="" width="1" height="40" />
+                </td>
+                <td width="20" bgcolor="#d9dfe8">
+                    <img src="images/spacer.gif" alt="" width="20" height="1" />
+                </td>
+                <td align="left" valign="middle" bgcolor="#d9dfe8" style="font-family:Tahoma, Geneva, sans-serif; font-size:14px;color:#002a66; line-height:1.1;"><strong>Thanks for registering your interest</strong>
+                </td>
+
+
+            </tr>
+
+        </table>
+
+
+
+
+        <table border="0" cellspacing="0" cellpadding="0" class="main_container_table">
+
+            <tr>
+                <td bgcolor="#42145f">&nbsp;</td>
+                <td align="left" valign="top" bgcolor="#42145f">
+                    <table width="486" border="0" cellspacing="0" cellpadding="0" align="center" class="mobile">
+                        <tr>
+                            <td align="center" class="textCenter">
+                                <a href="{LogEvent:280}http://www.natwest.com/businessrapport" target="_blank">
+                                    <img src="images/NW_rapport_3.gif" width="435" height="101" border="0" alt="To find out more and download Rapport, go to natwest.com/businessrapport or click on the button below:" class="mobImg" style="display:block; margin:0 auto;" />
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td bgcolor="#42145f">&nbsp;</td>
+            </tr>
+            <tr>
+                <td bgcolor="#42145f">&nbsp;</td>
+                <td bgcolor="#42145f" valign="top" align="center">
+
+
+
+
+                </td>
+                <td height="28" align="right" valign="bottom" bgcolor="#42145f">&nbsp;</td>
+            </tr>
+
+        </table>
+
+
+
+
+        <table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" class="main_container_table">
+            <tr>
+                <td width="20" bgcolor="#FFFFFF" class="edit_width">
+                    <img src="images/spacer.gif" alt="" width="100%" height="1" style="display:block" border="0" />
+                </td>
+                <td width="541" align="left" valign="top" bgcolor="#FFFFFF" style="font-family: Arial, Helvetica, sans-serif; font-size:14px; line-height:17px; color:#000001;" class="main_column ">
+                    At NatWest we take the security of our Business customers seriously.
+                    <br />
+                    <br />That's why we're giving you the opportunity to protect your business by downloading free Rapport security software.
+                    <br />
+                    <br />Rapport is easy to install and is completely compatible with any other software. It will:
+                </td>
+                <td width="36" bgcolor="#FFFFFF">
+                    <img src="images/spacer.gif" alt="" width="100%" height="1" style="display:block" border="0" />
+                </td>
+            </tr>
+
+            <tr>
+                <td width="20" bgcolor="#FFFFFF">
+                    <img src="images/spacer.gif" alt="" width="100%" height="1" style="display:block" border="0" />
+                </td>
+                <td width="541" align="left" valign="top" bgcolor="#FFFFFF" style="font-family: Arial, Helvetica, sans-serif; font-size:12px; line-height:17px; color:#000001;">
+                    <table width="96%" cellpadding="0" cellspacing="0" border="0" align="left">
+                        <tr>
+                            <td colspan="2" align="left" valign="top" height="15" style="font-size: 15px; line-height: 15px; border-collapse: collapse;">
+                                <img src="images/spacer.gif" alt="" width="100%" height="20" style="display:block" border="0" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25" valign="top">
+                                <img align="left" src="images/NW_bullet.gif" width="10" height="13" alt="Make more time for your business with Online banking - Ahead for business" style="height:auto; display:block" border="0" />
+                            </td>
+                            <td width="483" style="font-family: Arial, Helvetica, sans-serif; font-size:14px; line-height:17px; color:#000001;">Shield your online banking details from prying eyes</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left" valign="top" height="15" style="font-size: 15px; line-height: 15px; border-collapse: collapse;">
+                                <img src="images/spacer.gif" alt="" width="100%" height="15" style="display:block" border="0" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25" valign="top">
+                                <img align="left" src="images/NW_bullet.gif" width="10" height="13" alt="Make more time for your business with Online banking - Ahead for business" style="height:auto; display:block" border="0" />
+                            </td>
+                            <td style="font-family: Arial, Helvetica, sans-serif; font-size:14px; line-height:17px; color:#000001;">Safeguard your identity - above and beyond traditional anti-virus products</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left" valign="top" height="15" style="font-size: 15px; line-height: 15px; border-collapse: collapse;">
+                                <img src="images/spacer.gif" alt="" width="100%" height="15" style="display:block" border="0" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25" valign="top">
+                                <img align="left" src="images/NW_bullet.gif" width="10" height="13" alt="Make more time for your business with Online banking - Ahead for business" style="height:auto; display:block" border="0" />
+                            </td>
+                            <td style="font-family: Arial, Helvetica, sans-serif; font-size:14px; line-height:17px; color:#000001;">Protect your personal details even if your computer becomes infected</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left" valign="top" height="15" style="font-size: 15px; line-height: 15px; border-collapse: collapse;">
+                                <img src="images/spacer.gif" alt="" width="100%" height="20" style="display:block" border="0" />
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td width="36" bgcolor="#FFFFFF">
+                    <img src="images/spacer.gif" alt="" width="100%" height="1" style="display:block" border="0" />
+                </td>
+            </tr>
+            <tr>
+                <td width="5%" bgcolor="#FFFFFF">
+                    <img src="images/spacer.gif" alt="" width="100%" height="1" style="display:block" border="0" />
+                </td>
+                <td width="541" align="left" valign="top" bgcolor="#FFFFFF" style="font-family: Arial, Helvetica, sans-serif; font-size:14px; line-height:17px; color:#000001;">
+                    If you haven't already done so, <a href="{LogEvent:278}http://www.natwest.com/businessrapport" target="_blank" style="text-decoration:underline; color:#000001;">download Rapport today</a>. To be fully protected, you'll need to download the software onto every computer in your business. There's no limit to the number of times you can download Rapport - and it's free every time.
+
+
+                </td>
+                <td width="36" bgcolor="#FFFFFF">
+                    <img src="images/spacer.gif" alt="" width="100%" height="1" style="display:block" border="0" />
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div id="droparea">
+
+
+        <table border="0" cellspacing="0" cellpadding="0" class="table main_container_table main_content" bgcolor="#ebebeb" width="500" id="email_table">
+
+            <tr class="main_row">
+                <td bgcolor="#FFFFFF" class="main_column sortable" id=""></td>
+            </tr>
+
+            <!--<tr class="last_row">
+                <td bgcolor="#FFFFFF"></td>
+            </tr>-->
+
+
+
+        </table>
+
+
+    </div>
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+<!--jquery
+var htmlTable = $('#droparea').html();
+$.post('/download.php', {'html': htmlTable },function(response){
+  $('#result').html("The file should be downloading now"); 
+});
+--<
+
+<--html
+<input type="submit" value="DOWNLOAD" />
+-->
+
