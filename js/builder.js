@@ -115,23 +115,48 @@ $(window).load(function() {
 
     
     //click to delete
-    $('#droparea').on('click', 'tr', function() { 
+//    $('#droparea').on('click', 'tr', function() { 
+//    
+//        var tr = $(this).closest('#droparea tr');
+//        if ($(this).hasClass("main_row")) {
+//    
+//        }//end if
+//        
+//        else{
+//            tr.css("background-color","#FF3700");
+//            tr.fadeOut(400, function(){
+//            tr.remove();
+//            });
+//        }//end else
+//        
+//      return false;
+//    });
+//    
+    //onclick insert row
     
-        var tr = $(this).closest('#droparea tr');
-        if ($(this).hasClass("main_row")) {
-    
-        }//end if
+
+
+
         
-        else{
-            tr.css("background-color","#FF3700");
-            tr.fadeOut(400, function(){
-            tr.remove();
-            });
-        }//end else
-        
-      return false;
+
+
+    $(this).on('click', function() { 
+
+        $('#droparea > table > tbody > tr').each(function(){
+
+                                $(this).append('<p class="delete" style="display:block;">Delete?</p>');
+            $(this).addClass("current_selected");
+            $( ".delete").insertAfter(".main_row");
+            $(".delete").show();
+
+
+        });
+
+
+
     });
-    
+
+
     
 
 });//END LOAD FUNCTION
