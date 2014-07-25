@@ -83,6 +83,10 @@ $(window).load(function() {
         $('.generated').load('week.html');
     });*/
     
+    $(".builder-table").click(Function(){
+                
+                
+    });
     
     
 
