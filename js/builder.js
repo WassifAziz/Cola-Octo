@@ -82,7 +82,7 @@ $(window).load(function() {
     /*$('.loader').on('click', function(){
         $('.generated').load('week.html');
     });*/
-    
+
     
     
 //    $(".builder-table").click(function(){
@@ -104,6 +104,15 @@ $(window).load(function() {
          e.preventDefault();
     });
     
+            $("#mobileToggle").click(function() {
+                $("#droparea").animate({width: '360px'}, 200);
+            });
+            $("#tabletToggle").click(function() {
+                $("#droparea").animate({width: '768px'}, 200);
+            });
+            $("#desktopToggle").click(function() {
+                $("#droparea").animate({width: '100%'}, 200);
+            });
     
 
 });//END LOAD FUNCTION
