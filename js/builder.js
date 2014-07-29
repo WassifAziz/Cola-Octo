@@ -61,7 +61,11 @@ $(window).load(function() {
                         var html = [];
                     }
                 });
-
+                
+                $(this).attr("data-popover", "true");
+                $(this).attr("data-html", true);
+                $(this).addClass("ckeEdit");
+                $(this).attr("data-content", "<a href='#'>Delete</a> | <a href='#' class='editContents' >Edit</a>");
             } else {
                 console.log('no table');
             }
@@ -106,6 +110,11 @@ $(window).load(function() {
          e.preventDefault();
     });
     
+    var config = {
+		skin:'v2'
+	};
+    
+    
             $("#mobileToggle").click(function() {
                 $("#droparea").animate({width: '360px'}, 200);
             });
@@ -124,5 +133,37 @@ $(window).load(function() {
         $("#droparea").width(700);
     }
     });
+    
+    // POPOVER CODE START
+    var originalLeave = $.fn.popover.Constructor.prototype.leave;
+    $.fn.popover.Constructor.prototype.leave = function(obj){
+      var self = obj instanceof this.constructor ?
+        obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type)
+      var container, timeout;
 
+      originalLeave.call(this, obj);;
+
+      if(obj.currentTarget) {
+        container = $(obj.currentTarget).siblings('.popover')
+        timeout = self.timeout;
+        container.one('mouseenter', function(){
+          //We entered the actual popover – call off the dogs
+          clearTimeout(timeout);
+          //Let's monitor popover content instead
+          container.one('mouseleave', function(){
+            $.fn.popover.Constructor.prototype.leave.call(self, self);
+          });
+        })
+      }
+    };
+    // POPOVER CODE END
+
+
+$('body').popover({ selector: '[data-popover]', trigger: 'click hover', placement: 'auto', delay: {show: 50, hide: 400}});
+    
+    
+$(document).on('click', '.editContents', function() {
+        // CLICK CODE HERE - Coded the click function like this so that the document checks the click event live
+});
+    
 });//END LOAD FUNCTION

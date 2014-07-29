@@ -8,12 +8,15 @@
     <script type="text/javascript" src="js/jquery.inlineedit.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script type="text/javascript" src="js/builder.js"></script>
-
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    
     <!--slider css/jquery-->
 
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
 
     <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -52,6 +55,30 @@
         #droparea.preview #email_table {display: block; margin: 0 auto;}
         
         .preview {text-align: center; margin: 0 auto; width: 300px; margin-bottom: 20px;}
+        
+        .popover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1010;
+            display: none;
+            max-width: 276px;
+            padding: 1px;
+            text-align: left;
+            white-space: normal;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,0.2);
+            border-radius: 6px;
+            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            background-clip: padding-box;
+        }
+        .fade {
+            opacity: 0;
+            -webkit-transition: opacity .15s linear;
+            transition: opacity .15s linear;
+        }
     </style>
 
 </head>
@@ -229,7 +256,7 @@
     <div id="draggable">
 
 
-        <table cellpadding="0" cellspacing="0" border="0" width="700" class="wf">
+        <table cellpadding="0" cellspacing="0" border="0" width="700" class="wf" align="center">
             <tr>
                 <td>
                     <table cellpadding="0" cellspacing="0" border="0" width="700" class="wf mob_90" align="center">
