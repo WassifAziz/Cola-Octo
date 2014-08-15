@@ -80,15 +80,127 @@ $(window).load(function() {
     }, 1000);
 
 
-    //INLINE EDIT SCRIPT
-    $(function() {
-        $('.editable').inlineEdit({
-            control: 'textarea'
-        });
+
+
+
+
+    
+    
+    //double click to insert
+    $(".builder-table").click(function(){
+
+        var value = $(this).parent().html();
+        value = value.trim();
+        $(value).appendTo(".main_row td");
+
     });
+    
 
 
-    /*$('.loader').on('click', function(){
+    
+    //FROALA EDITOR
+    $(function() {
+        $('.selector').editable({
+            // Set inverse skin to true.
+            theme: 'dark',
+
+            inlineMode: false
+        })
+    });
+        
+    $('#droparea').on('click', 'tr', 'td', function() { 
+      $(this).addClass('selector');
+    });
+        
+
+    
+    //DELETE ROW
+//    $('#droparea').on('click', 'tr', function() { 
+//        if (confirm('Are you sure you delete this section?')) {
+//            $(this).parents("tr").remove()  
+//        } else {
+//            // Do nothing!
+//        }
+//    });
+//    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    ////UNUSD SCRIPTS
+    
+    //INLINE EDIT SCRIPT
+//    $(function() {
+//        $('.editable').inlineEdit({
+//            control: 'textarea'
+//        });
+//
+//    });
+    
+    
+    
+//////DELETE BUTTONS ON CLICK
+//    $(this).on('click', function() { 
+//        
+//        $(this).append('<p class="delete" style="display:block;">Delete?</p>');
+//
+//        $('#droparea > table > tbody > tr').each(function(){
+//
+//                                
+//            $(this).addClass("current_selected");
+//            
+//        
+//
+//
+//        });
+//
+//
+//
+//    });
+    
+    
+    
+    
+//        var originalLeave = $.fn.popover.Constructor.prototype.leave;
+//        $.fn.popover.Constructor.prototype.leave = function(obj){
+//        var self = obj instanceof this.constructor ?
+//        obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type)
+//        var container, timeout;
+//
+//        originalLeave.call(this, obj);
+//
+//        if(obj.currentTarget) {
+//        container = $(obj.currentTarget).siblings('.popover')
+//        timeout = self.timeout;
+//        container.one('mouseenter', function(){
+//          //We entered the actual popover – call off the dogs
+//          clearTimeout(timeout);
+//          //Let's monitor popover content instead
+//          container.one('mouseleave', function(){
+//            $.fn.popover.Constructor.prototype.leave.call(self, self);
+//          });
+//        })
+//        }
+//        };
+    
+    
+    
+        /*$('.loader').on('click', function(){
         $('.generated').load('week.html');
     });*/
 
@@ -103,60 +215,14 @@ $(window).load(function() {
 //    });
     
     
-    //double click to insert
-    $(".builder-table").click(function(){
-
-        var value = $(this).parent().html();
-        value = value.trim();
-        $(value).appendTo(".main_row td");
-
-    });
     
-
     
-    //click to delete
-//    $('#droparea').on('click', 'tr', function() { 
-//    
-//        var tr = $(this).closest('#droparea tr');
-//        if ($(this).hasClass("main_row")) {
-//    
-//        }//end if
-//        
-//        else{
-//            tr.css("background-color","#FF3700");
-//            tr.fadeOut(400, function(){
-//            tr.remove();
-//            });
-//        }//end else
-//        
-//      return false;
-//    });
-//    
-    //onclick insert row
     
-
-
-
-        
-
-
-    $(this).on('click', function() { 
-
-        $('#droparea > table > tbody > tr').each(function(){
-
-                                $(this).append('<p class="delete" style="display:block;">Delete?</p>');
-            $(this).addClass("current_selected");
-            $( ".delete").insertAfter(".main_row");
-            $(".delete").show();
-
-
-        });
-
-
-
-    });
-
-
+    
+    
+    
+    
+    
     
 
 });//END LOAD FUNCTION
