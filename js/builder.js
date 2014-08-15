@@ -87,42 +87,41 @@ $(window).load(function() {
     
     
     //double click to insert
-    $(".builder-table").click(function(){
-
-        var value = $(this).parent().html();
-        value = value.trim();
-        $(value).appendTo(".main_row td");
-
-    });
-    
-
-
-    
-    //FROALA EDITOR
-    $(function() {
-        $('.selector').editable({
-            // Set inverse skin to true.
-            theme: 'dark',
-
-            inlineMode: false
-        })
-    });
-        
-    $('#droparea').on('click', 'tr', 'td', function() { 
-      $(this).addClass('selector');
-    });
-        
-
-    
-    //DELETE ROW
-//    $('#droparea').on('click', 'tr', function() { 
-//        if (confirm('Are you sure you delete this section?')) {
-//            $(this).parents("tr").remove()  
-//        } else {
-//            // Do nothing!
-//        }
+//    $(".builder-table").click(function(){
+//
+//        var value = $(this).parent().html();
+//        value = value.trim();
+//        $(value).appendTo(".main_row td");
+//
 //    });
-//    
+    
+
+    //DELETE ROW
+    //    $('#droparea').on('click', 'tr', function() { 
+    //        if (confirm('Are you sure you delete this section?')) {
+    //            $(this).parents("tr").remove()  
+    //        } else {
+    //            // Do nothing!
+    //        }
+    //    });
+    //    
+
+    
+    //trumbowyg EDITOR
+
+
+    
+    $(".trumbowyg.closable").on("click", function() {
+            
+        $('.trumbowyg.closable').trumbowyg({
+            closable: true
+        });
+        $('.trumbowyg').parent("tr").parent("tbody").parent("table").removeClass("ui-draggable");
+
+    
+    });
+    
+
     
     
     
