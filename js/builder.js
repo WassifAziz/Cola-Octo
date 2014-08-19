@@ -54,7 +54,7 @@ $(window).load(function() {
         $('.main_row').each(function() {
 
             var TabIn = $('.sortable').find('table').length;
-            
+
             if (TabIn >= 1) {
                 //console.log('has ' + TabIn);
 
@@ -71,7 +71,7 @@ $(window).load(function() {
                 $('.editable').each(function(index) {//give tr a tabindex attribute in order to count them
                     $(this).attr('tabindex', index)
                 });
-                
+
                 $(this).after('<tr class="main_row editable"><td bgcolor="#FFFFFF" class="sortable" id=""></td></tr>');
 
                 $(".sortable").sortable({
@@ -86,21 +86,21 @@ $(window).load(function() {
             }
 
         });
-        
-        
+
+
         $('.editable').on('click', function() {
 
             var TrTotal = $(this).attr('tabindex');
 
             console.log('clicked ' + TrTotal);
-            
-            
+
+
             /*if ($(this, 'td:contains("some text")').length > 1) {
                 //alert ("I have text");
                 console.log('has text');
             }*/
-            
-            
+
+
             if (!$(this, "td").text().trim().length) {
                 console.log('no text');//if td doesn't have text
             }
@@ -112,15 +112,15 @@ $(window).load(function() {
                 });
                 $('.editable').removeClass('trumbowyg closable');
             }
-            
+
             //$(this, "td").addClass('trumbowyg closable');
-            
-            
+
+
             //editor functions
             /*$('.trumbowyg.closable').trumbowyg({
                 closable: true
             });
-           
+
             $("#droparea td").on('click', this, function () {
 
                 $(this, "td").addClass('trumbowyg closable');
@@ -130,16 +130,16 @@ $(window).load(function() {
                 });
 
             });*/
-            
+
         });
-        
-        
-        
+
+
+
     }, 1000);
 
 
 
-   /* $('.editable').on('click', function() {
+    /* $('.editable').on('click', function() {
         //console.log('clicked ' + TrTotal);
         var TrTotal = $(this).attr('tabindex');
         //console.log('hello');
@@ -191,7 +191,7 @@ $(window).load(function() {
 
 
     /*$("#droparea td").on('click', this, function () {
-                
+
         $(this, "td").addClass('trumbowyg closable');
 
             $('.trumbowyg.closable').trumbowyg({
@@ -203,9 +203,9 @@ $(window).load(function() {
     /*$("#droparea td").each(function(){
         var TrTotal = $('#droparea tr.editrow').length;
         //var TrTotal = setInterval($('#droparea tr.editrow').length, 1000);
-            
+
         $("#droparea td").on('click', this, function () {
-        
+
            console.log('clicked' + TrTotal);
 
         });
