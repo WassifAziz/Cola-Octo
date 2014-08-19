@@ -285,24 +285,6 @@ $(window).load(function() {
     /*$('.loader').on('click', function(){
         $('.generated').load('week.html');
     });*/
-<<<<<<< HEAD
-
-    
-    
-//    $(".builder-table").click(function(){
-//        
-//        var value = $(this).html();
-//        value = value.replace(/\s+/g, '');
-//        (value).appendTo(".main_row td");
-//        
-//    });
-    
-    $(".builder-table").click(function(){
-
-        var value = $(this).html().trim();;
-        $(value).appendTo(".main_row td");
-=======
->>>>>>> origin/double_click_insert
 
 
 
