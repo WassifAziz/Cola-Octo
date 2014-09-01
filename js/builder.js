@@ -86,6 +86,8 @@ $(window).load(function() {
             }
 
         });
+        
+
 
 
         $('.editable').on('click', function() {
@@ -106,12 +108,12 @@ $(window).load(function() {
             }
             else{
                 console.log('HAS text');// if td HAS text
-                $(this).addClass('trumbowyg closable');
-                $('.trumbowyg.closable').trumbowyg({
-                    closable: true
-                });
+                $(this).addClass('click2edit');
+
                 $('.editable').removeClass('trumbowyg closable');
             }
+
+
 
             //$(this, "td").addClass('trumbowyg closable');
 
@@ -150,6 +152,40 @@ $(window).load(function() {
 
     });
 */
+
+    //download HTML functions
+    var a = document.body.appendChild(
+        document.createElement("a")
+    );
+    a.download = "export.html";
+    a.innerHTML = "[Export conent]";
+
+    $('#droparea').bind("DOMSubtreeModified",function(){
+        a.href = "data:text/html," + document.getElementById("droparea").innerHTML;   
+    });
+
+////////////////////CLICK 2 EDIT SCRIPT, ONLY WORKS IN CONSOLE RIGHT NOW???////////////////////////////////
+//    var edit = function() {
+//        $('.click2edit').summernote({focus: true});
+//    };
+//    
+//    var save = function() {
+//        var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+//        $('.click2edit').destroy();
+//    };
+    
+    
+    
+    
+    
+    //insert BR on enter press
+//    $(document).keypress(function(e) {
+//        if(e.which == 13) {
+//            var pos = $('.trumbowyg-editor').caret()
+//            alert(pos);
+//            
+//        }
+//    });
 
 
     //double click to insert
